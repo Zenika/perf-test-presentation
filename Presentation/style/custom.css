@@ -1,0 +1,7 @@
+body:after {
+    content: url(../img/zenika_logo.svg);
+    font-size: 10px;
+    position: fixed;
+    bottom: 3em;
+    left: 3em;
+}
