@@ -4,17 +4,17 @@
 ##  ------------
 
 presentation: ## Start the presentation web server
-	@docker run --rm -p 1948:1948 -p 35729:35729 -v $(shell pwd)/Presentation:/slides webpronl/reveal-md:latest /slides --watch --css style/custom.css --highlight-theme a11y-dark
+	@docker run --rm -p 1948:1948 -p 35729:35729 -v $(shell pwd)/Presentation:/slides webpronl/reveal-md:latest /slides --watch --css style/custom.css --highlight-theme github-dark
 .PHONY: presentation
 
 presentation-w-notes: .clean-presentation .prepare-print## Start the presentation web server (with notes)
-	@docker run -d -p 1948:1948 -p 35729:35729 -v $(shell pwd)/Presentation:/slides --name reveal-md webpronl/reveal-md:latest /slides --css style/custom.css --highlight-theme a11y-dark
+	@docker run -d -p 1948:1948 -p 35729:35729 -v $(shell pwd)/Presentation:/slides --name reveal-md webpronl/reveal-md:latest /slides --css style/custom.css --highlight-theme github-dark
 	@sh ./tools/print-mode.sh
 	@$(MAKE) .clean-presentation
 .PHONY: presentation-w-notes
 
 export-pdf: .clean-presentation .prepare-print ## Export presentation to pdf (used in GH action)
-	@docker run -d -p 1948:1948 -v $(shell pwd)/Presentation:/slides --name reveal-md webpronl/reveal-md:latest /slides --css style/custom.css --highlight-theme a11y-dark
+	@docker run -d -p 1948:1948 -v $(shell pwd)/Presentation:/slides --name reveal-md webpronl/reveal-md:latest /slides --css style/custom.css --highlight-theme github-dark
 	@mkdir generation_tmp && chmod 777 generation_tmp
 	@sleep 5
 	@sh ./tools/print-pdf.sh
