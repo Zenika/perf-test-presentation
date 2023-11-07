@@ -155,43 +155,40 @@ Les tests de performance permet également de :
 6. test d'endurance
 
 Note:
-Voici les différents tests de performance praticable
+Voici les différents tests de performance praticable ainsi que les diférences entre eux.
 
 <!--v-->
 
-### test en isolement
+### Test en isolement
 
 ![](img/what-tests-isolation-test.png)
 
 Note:
-this kind of test is to perform on a test bench (an isolated test case / context) by repeating test execution.
-
-The tested part can be a bunch of code, or an isolated system.
+Ce type de test est pratiqué en banc de test (pour un context / cas isolé) en pratiquant une 
+répétition des executions répété.
 
 <!--v-->
 
-### test de charge
+### Test de charge
 
 ![](img/what-tests-load-test.png)
 
 Note:
-The load test is the simplest way to test an application.
-The objective is to check if the application can manage the limit that has been decided before the test.
-The application dependencies infrastructure services should also be monitored during the test.
+Le test de charge est la forme la plus simple pour tester une application.
+L'objectif est de vérifier si l'application est capable de gérer les limites de temps de réponse / consommation 
+ressources qui ont été décider préalablement (par exemple au travers d'un SLA)
+L'infrastructure est également sous-monitoring durant cette phase de test.
 
-in build context, this test can be used to monitor the application response time, and the objective to maintain.
+Ce type de test peut être utilisé comme un test de qualité d'une release à une autre, ainsi qu'un objectif à maintenir.
 
 <!--v-->
 
-### test en stress
+### Test en stress
 
 ![](img/what-tests-stress-test.png)
 
 Note:
-This kind of test is designed to determine the response limit for the tested application and/or the application
-dependencies.
-
-(schema to redo)
+Ce type de test vise principalement à déterminer les limites hautes de l'application et/ou de ses dépendances.
 
 <!--v-->
 
@@ -200,34 +197,34 @@ dependencies.
 ![](img/what-tests-spike-test.png)
 
 Note:
-The spike testing aims to determine the performance issues when dramatic changes occur with application, like a large
-amount of user connect at the same-time or a large fewer of users that disconnect.
+Le test de pic vise à déterminer les problèmes de performance quand un changement de contexte se produit sur 
+l'application testée, que ce soit une montée en charge soudaine du nombre d'utilisateurs qui se connecte en même temps 
+ou à l'inverse une baisse de charge.
 
 <!--v-->
 
-### test aux limites
+### Test aux limites
 
 ![](img/what-tests-breakpoint-test.png)
 
 Note:
-This kind of test is to evaluate the load and the time when the tested application will fail.
-Breakpoint testing is often referred to as Capacity testing because it can be use to determine if the
-SLA (Service Level Agreement) can be managed by the tested application.
+Le test au limites permet d'évaluer le point de rupture de l'application.
+On parle souvent de test de capacité car il est utile pour déterminer si le SLA est judicieux pour l'application testée.
 
 <!--v-->
 
-### soaking testing
+### Test d'endurance
 
 ![](img/what-tests-soaking-test.png)
 
 Note:
-The soaking testing or the "Endurance Testing" is done to determine if the tested application can sustain a continuous
-load during a tremendous amount of time.
-Like load testing, the application dependencies infrastructure services should also be monitored during the test.
+Le test d'endurance consiste à maintenir une charge pendant un temps extrêmement long et permet déterminer si 
+l'application testée est capable de supporter un tel scénario.
+Comme les tests de charge l'infrastructure est également sous-monitoring durant cette phase de test.
 
 <!--h-->
 
-### Test with Taurus By Blazemeter
+### Tests de charge avec Taurus
 
 Note:
 
