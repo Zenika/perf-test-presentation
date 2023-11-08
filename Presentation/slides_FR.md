@@ -7,44 +7,13 @@ revealOptions:
   auto-animate: true
 ---
 
-## Les tests de performances
+## Les tests de performance
 
 <img src="img/zenika_logo.svg" alt="drawing" width="400"/>
 
-Note: authors : 
- - S.LAVAZAIS
- - D.SIX
+note:
 
-sources:
-TO COMPLETE
-
-<!--v-->
-
-## Plan
-
-1. La performance, qu'est-ce que c'est ?
-_montrer ce qu'on entend par "performance"_
-_expliquer les différents niveaux de performance évaluable_
-_du code à la releases_
-2. Qu'est-ce qu'un test de charge ?
-   1. test de charge
-_évaluation des performances par rapport à une cible donnée sur un délai d'une heure_
-   2. test d'endurance
-_évaluation des performances par rapport à une durée de fonctionnement sans problème_
-   3. test sur un pic de charge
-_évaluation des performances sur un pic d'activité sur un délai très court avec des répétitions_
-   4. test aux limites
-_évaluation des performances jusqu'au point de rupture_
-3. Qu'est-ce qu'un test type micro-benchmark
-_explication des différents cas de test possible_
-Note:
-
-TODO :
-
-## Les tests de performance
-
-
-Note: authors :
+authors:
 - S.LAVAZAIS
 - D.SIX
 
@@ -57,9 +26,8 @@ Sources:
 
 1. Les tests performance, qu'est-ce que c'est ?
 2. Quel type de test pratiquer?
-3. Tests en isolement avec ??? 
-4. Tests de charge avec Taurus
-5. Demonstration
+3. Tests de charge avec Taurus
+4. Tests en isolement avec ??? 
 
 Note:
 For this presentation, we're going to see roughly through the performance testing, and we're going to see how to work a solution to make performance testing easier and automated, "Taurus" by Blazemeter.
@@ -75,10 +43,11 @@ practice against an application.
    4. test de pic
    5. test au limites
    6. test d'endurance
-3. Tests en isolement avec ???
-4. Tests de charge avec Taurus
-5. Demo
-6. Merci !
+3. Tests de charge avec Taurus (a faire)
+   1. Demo de charge (a faire)
+4. Tests en isolement avec ??? (a faire)
+   1. Demo Isolement (a faire)
+5. Merci !
 
 <!--h-->
 
