@@ -1,5 +1,5 @@
 ---
-title: Template
+title: Performance-tests
 separator: <!--h-->
 verticalSeparator: <!--v-->
 theme: blood
