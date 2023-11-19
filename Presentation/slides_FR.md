@@ -193,7 +193,55 @@ Comme les tests de charge l'infrastructure est également sous-monitoring durant
 
 <!--h-->
 
+<!-- .slide: data-auto-animate -->
 ### Tests de charge avec Taurus
 
 Note:
+Taurus est un kit de développement qui permet à la fois :
+ - De pouvoir exécuter des tests avec plusieurs frameworks différents de test (sans qu'il y est une grande différence dans 
+l'implémentation du test)
+ - De pouvoir exécuter des tests aussi bien en local que sur un cloud provider. (plateforme Blazemeter)
+
+<!--v-->
+
+<!-- .slide: data-auto-animate -->
+### Tests de charge avec Taurus
+
+Note:
+Les tests de charge avec Taurus sont assez simple, ils sont constitué de deux parties :
+ - la configuration de l'exécution
+ - la configuration du/des scénario(s)
+
+<!--v-->
+
+<!-- .slide: data-auto-animate -->
+### Tests de charge avec Taurus
+
+Note:
+Pour notre petite démonstration, on va prendre l'exemple d'une API qui gère la déposition de données en amont d'un 
+système d'information
+
+<!--v-->
+
+<!-- .slide: data-auto-animate -->
+### Tests de charge avec Taurus
+
+Note:
+Tout d'abords les paramètres d'exécution qui gère donc la volumétrie et le temps d'exécution du scenario de test:
+ - 100 utilisateurs
+ - 5000 requêtes par secondes (total reparti sur les 100 utilisateurs)
+ - sur 1 heure
+
+<!--v-->
+
+<!-- .slide: data-auto-animate -->
+### Tests de charge avec Taurus
+
+Note:
+Pour tester notre API, on va donc avoir un scénario assez simple qui va simuler: 
+1. un enregistrement d'une donnée
+2. une lecture de ce nouvel enregistrement
+3. une modification de ce nouvel enregistrement
+
+Ce scénario sera exécuté par tous les utilisateurs virtuels
 
