@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/Zenika/perf-test-presentation/compare/1.1.0...1.2.0) (2023-11-28)
+
+
+### Features
+
+* **demonstration:** applying style sheet to make code more readable ([2a2cc1c](https://github.com/Zenika/perf-test-presentation/commit/2a2cc1cbacbc99318823b1333908511f9195d704))
+* **micro:** add microbenchmark ([37c784e](https://github.com/Zenika/perf-test-presentation/commit/37c784ea3fd7d5ce6d3af593df9acb0b4708f926))
+
 # [1.1.0](https://github.com/Zenika/perf-test-presentation/compare/1.0.0...1.1.0) (2023-11-27)
 
 
