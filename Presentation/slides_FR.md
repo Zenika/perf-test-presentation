@@ -353,18 +353,43 @@ StreamVsForMain.findBrandStream  thrpt    5  43736,684 ± 1081,065  ops/s
 <!--h-->
 
 <!-- .slide: data-auto-animate -->
-### Tests de charge avec Taurus
+### Taurus
+
+![](img/taurus_logo.png)
+![](img/blazemeter_logo.png)
 
 Note:
 Taurus est un kit de développement qui permet à la fois :
- - De pouvoir exécuter des tests avec plusieurs frameworks différents de test (sans qu'il y est une grande différence dans 
-l'implémentation du test)
+ - De pouvoir exécuter des tests avec plusieurs frameworks différents de test (sans qu'il y ait une grande différence dans l'implémentation des scénarios de tests)
  - De pouvoir exécuter des tests aussi bien en local que sur un cloud provider. (plateforme Blazemeter)
 
 <!--v-->
 
 <!-- .slide: data-auto-animate -->
-### Tests de charge avec Taurus
+### Taurus
+
+in local-dev condition
+
+```yaml
+execution:
+- concurrency: 100
+  hold-for: 1h
+  ramp-up: 15m
+  scenario: scenario1
+  steps: 10
+  throughput: 2000
+```
+
+```yaml
+scenarios:
+  scenario1:
+    requests:
+    - body: [...]
+      headers: [...]
+      label: first_req
+      method: GET
+      url: https://api.publicapis.org/entries
+```
 
 Note:
 Les tests de charge avec Taurus sont assez simple, ils sont constitué de deux parties :
@@ -374,7 +399,46 @@ Les tests de charge avec Taurus sont assez simple, ils sont constitué de deux p
 <!--v-->
 
 <!-- .slide: data-auto-animate -->
-### Tests de charge avec Taurus
+### Taurus
+
+in cloud condition
+
+```yaml
+execution:
+- concurrency: 100
+  hold-for: 1h
+  ramp-up: 15m
+  scenario: scenario1
+  steps: 10
+  throughput: 2000
+  provisioning: cloud
+  locations: 
+    eu-central-1: 2
+    eu-west-1: 2
+```
+
+```yaml
+scenarios:
+  scenario1:
+    requests:
+    - body: [...]
+      headers: [...]
+      label: first_req
+      method: GET
+      url: https://api.publicapis.org/entries
+```
+
+Note:
+Les tests de charge avec Taurus sont assez simple, ils sont constitué de deux parties :
+ - la configuration de l'exécution
+ - la configuration du/des scénario(s)
+
+<!--v-->
+
+<!-- .slide: data-auto-animate -->
+### Taurus
+
+<img src="img/tested_api.png" alt="drawing" width="800"/>
 
 Note:
 Pour notre petite démonstration, on va prendre l'exemple d'une API qui gère la déposition de données en amont d'un 
@@ -383,24 +447,56 @@ système d'information
 <!--v-->
 
 <!-- .slide: data-auto-animate -->
-### Tests de charge avec Taurus
+### Taurus
+
+<img src="img/test_condition.png" alt="drawing" width="600"/>
 
 Note:
 Tout d'abords les paramètres d'exécution qui gère donc la volumétrie et le temps d'exécution du scenario de test:
  - 100 utilisateurs
- - 5000 requêtes par secondes (total reparti sur les 100 utilisateurs)
+ - 2000 requêtes par secondes (total reparti sur les 100 utilisateurs)
  - sur 1 heure
+ - 15 minutes de monté en charge
 
 <!--v-->
 
 <!-- .slide: data-auto-animate -->
-### Tests de charge avec Taurus
+### Taurus
+
+<img src="img/test_scenario.png" alt="drawing" width="800"/>
 
 Note:
 Pour tester notre API, on va donc avoir un scénario assez simple qui va simuler: 
 1. un enregistrement d'une donnée
 2. une lecture de ce nouvel enregistrement
 3. une modification de ce nouvel enregistrement
+4. suppression du message en question
 
 Ce scénario sera exécuté par tous les utilisateurs virtuels
+
+<!--v-->
+
+<!-- .slide: data-auto-animate -->
+### Taurus
+
+Demo !
+
+Note:
+Dans cette demonstration on fait:
+1. lancer le scenario en local
+2. on regarde rapidement les stats si tout semble ok
+3. lancer le scenario en cloud
+4. on va regarder le scenario en mode cloud et consulter les différents tableau de Blazemeter
+
+<!--h-->
+
+### Merci !
+
+Questions ?
+
+Note:
+ajouter QR code
+ajouter nos tronches...
+
+
 
