@@ -26,8 +26,8 @@ Sources:
 
 1. Les tests performance, qu'est-ce que c'est ?
 2. Quel type de test pratiquer?
-3. Tests en isolement avec Java Microbenchmark Harness
-4. Tests de charge avec Taurus
+3. Java Microbenchmark Harness
+4. Taurus
 
 Note:
 For this presentation, we're going to see roughly through the performance testing, and we're going to see how to work a solution to make performance testing easier and automated, "Taurus" by Blazemeter.
