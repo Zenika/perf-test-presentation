@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/Zenika/perf-test-presentation/compare/1.2.0...1.3.0) (2023-11-29)
+
+
+### Features
+
+* **demonstration:** update taurus presentation ([171619a](https://github.com/Zenika/perf-test-presentation/commit/171619a72975526d5a181ba19be64180a8680e3c))
+
 # [1.2.0](https://github.com/Zenika/perf-test-presentation/compare/1.1.0...1.2.0) (2023-11-28)
 
 
