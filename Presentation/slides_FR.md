@@ -30,10 +30,12 @@ Sources:
 4. Taurus
 
 Note:
-For this presentation, we're going to see roughly through the performance testing, and we're going to see how to work a solution to make performance testing easier and automated, "Taurus" by Blazemeter.
+Pour cette présentation, nous allons voir grossièrement ce qu sont les tests de performance, et nous allons faire deux focus sur des sous-domaine de test qui sont le micro benchmark et les tests de charge.
 
-But first, let me introduce you what is performance testing and how many kinds of tests we can
-practice against an application.
+ - Le focus sur le micro-benchmark se fera avec Java Microbenchmark Harness (JMH) et sera présenté par Douglas Six.
+ - Le focus sur les tests de charge se fera avec Taurus et sera présenté par Sylvain Lavazais.
+
+Mais tout d'abord, parlons des tests de performance...
 
 1. Les testes de performance, qu'est-ce que c'est ?
 2. Quel type de test pratiquer?
@@ -57,10 +59,9 @@ practice against an application.
 
 Note:
 Les tests de performances, c'est la capacité à mettre une application et toutes ses dépendances dans un context virtuel 
-ou réel et observer comment ces composants ce comportent.
-On peut ainsi en déterminer des axes d'amélioration pour l'application testée.
+ou réel et observer comment ces composants se comportent dans des conditions de stress / charge / etc.
 
-(point à discuter avec @sixdouglas)
+On peut ainsi en déterminer des axes d'amélioration.
 
 <!--v-->
 
@@ -133,6 +134,8 @@ Voici les différents tests de performance praticable ainsi que les diférences 
 ![](img/what-tests-isolation-test.png)
 
 Note:
+Douglas
+
 Ce type de test est réalisé sur un _banc de test_ (pour un cas isolé) en pratiquant une 
 répétition d'exécutions.
 
@@ -143,7 +146,9 @@ répétition d'exécutions.
 ![](img/what-tests-load-test.png)
 
 Note:
-Le test de charge est la forme la plus simple pour tester une application.
+Sylvain
+
+Le test de charge est la forme la plus simple et connu pour tester une application.
 L'objectif est de vérifier si l'application est capable de gérer les limites de temps de réponse / consommation 
 ressources qui ont été décider préalablement (par exemple au travers d'un SLA)
 L'infrastructure est également sous-monitoring durant cette phase de test.
@@ -152,20 +157,26 @@ Ce type de test peut être utilisé comme un test de qualité d'une release à u
 
 <!--v-->
 
-### Test en stress
+### Test en stress (surcharge)
 
 ![](img/what-tests-stress-test.png)
 
 Note:
+Douglas
+
 Ce type de test vise principalement à déterminer les limites hautes de l'application et/ou de ses dépendances.
+
+(ajuster le graph, pour avoir deux/quatre fois la charge par rapport à la limite)
 
 <!--v-->
 
-### test de pic
+### test de pic de charge
 
 ![](img/what-tests-spike-test.png)
 
 Note:
+Sylvain
+
 Le test de pic vise à déterminer les problèmes de performance quand un changement de contexte se produit sur 
 l'application testée, que ce soit une montée en charge soudaine du nombre d'utilisateurs qui se connecte en même temps 
 ou à l'inverse une baisse de charge.
@@ -177,8 +188,12 @@ ou à l'inverse une baisse de charge.
 ![](img/what-tests-breakpoint-test.png)
 
 Note:
+Douglas
+
 Le test au limites permet d'évaluer le point de rupture de l'application.
 On parle souvent de test de capacité car il est utile pour déterminer si le SLA est judicieux pour l'application testée.
+
+l'objectif du test est la rupture de l'application. (ex: `au doigt mouillé la limite` 70% des réponses KO)
 
 <!--v-->
 
@@ -187,9 +202,13 @@ On parle souvent de test de capacité car il est utile pour déterminer si le SL
 ![](img/what-tests-soaking-test.png)
 
 Note:
+Sylvain
+
 Le test d'endurance consiste à maintenir une charge pendant un temps extrêmement long et permet déterminer si 
 l'application testée est capable de supporter un tel scénario.
 Comme les tests de charge l'infrastructure est également sous-monitoring durant cette phase de test.
+
+le critere determinant c'est le temps du test (il est tres tres long, le faire apparaitre sur le graph)
 
 <!--h-->
 
@@ -198,6 +217,19 @@ Comme les tests de charge l'infrastructure est également sous-monitoring durant
 Outils utilisé: [Open JDK JMH](https://github.com/openjdk/jmh)
 
 Note: JMH est un outil proposé et maintenu par OpenJDK
+
+<!--v-->
+
+### Test en isolement
+
+![](img/what-tests-isolation-test.png)
+
+Note:
+Douglas
+
+Ce type de test est réalisé sur un _banc de test_ (pour un cas isolé) en pratiquant une 
+répétition d'exécutions.
+
 
 <!--v-->
 
@@ -482,7 +514,7 @@ Ce scénario sera exécuté par tous les utilisateurs virtuels
 Demo !
 
 Note:
-Dans cette demonstration on fait:
+Dans cette demonstration, on fait :
 1. lancer le scenario en local
 2. on regarde rapidement les stats si tout semble ok
 3. lancer le scenario en cloud
@@ -495,8 +527,9 @@ Dans cette demonstration on fait:
 Questions ?
 
 Note:
-ajouter QR code
-ajouter nos tronches...
+(ajouter QR code)
+
+(ajouter nos tronches...)
 
 
 
