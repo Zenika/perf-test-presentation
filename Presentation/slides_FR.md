@@ -30,7 +30,7 @@ Sources:
 4. Taurus
 
 Note:
-Pour cette présentation, nous allons voir grossièrement ce qu sont les tests de performance, et nous allons faire deux focus sur des sous-domaine de test qui sont le micro benchmark et les tests de charge.
+Pour cette présentation, nous allons voir grossièrement ce que sont les tests de performance, et nous allons faire deux focus sur des sous-domaine de test qui sont le micro benchmark et les tests de charge.
 
  - Le focus sur le micro-benchmark se fera avec Java Microbenchmark Harness (JMH) et sera présenté par Douglas Six.
  - Le focus sur les tests de charge se fera avec Taurus et sera présenté par Sylvain Lavazais.
@@ -136,8 +136,9 @@ Voici les différents tests de performance praticable ainsi que les diférences 
 Note:
 Douglas
 
-Ce type de test est réalisé sur un _banc de test_ (pour un cas isolé) en pratiquant une 
-répétition d'exécutions.
+Ce type de test est réalisé sur un _banc de test_, c'est à dire un sous ensemble de l'application finale,
+par example la fonctionalité d'ajout au panier mais sans la partie navigation dans le site...
+Le test sera réalisé en pratiquant une répétition d'exécutions. 
 
 <!--v-->
 
@@ -164,9 +165,10 @@ Ce type de test peut être utilisé comme un test de qualité d'une release à u
 Note:
 Douglas
 
-Ce type de test vise principalement à déterminer les limites hautes de l'application et/ou de ses dépendances.
+Ce type de test vise à comprendre comment l'application va se comporter face à une charge plus importante
+que le cas nominal (x2 à x4) en utilisant la même infra que celle ciblé. On identifie ainsi les endroits de 
+l'application où se produiront les premières erreurs, ainsi que les temps de réponse en dehors des exigences.
 
-(ajuster le graph, pour avoir deux/quatre fois la charge par rapport à la limite)
 
 <!--v-->
 
@@ -193,7 +195,9 @@ Douglas
 Le test au limites permet d'évaluer le point de rupture de l'application.
 On parle souvent de test de capacité car il est utile pour déterminer si le SLA est judicieux pour l'application testée.
 
-l'objectif du test est la rupture de l'application. (ex: `au doigt mouillé la limite` 70% des réponses KO)
+L'objectif visé est la rupture de l'application pour une infrastructure donnée. La rupture étant caractérisée par des données
+définies en accord avec le client par ex: "au doigt mouillé la limite sera de 70% des réponses KO", ou bien un temps de réponse de 10s
+par page... La monté en charge est ici lente et le test peut être long.
 
 <!--v-->
 
@@ -216,36 +220,27 @@ le critere determinant c'est le temps du test (il est tres tres long, le faire a
 
 Outils utilisé: [Open JDK JMH](https://github.com/openjdk/jmh)
 
-Note: JMH est un outil proposé et maintenu par OpenJDK
-
-<!--v-->
-
-### Test en isolement
-
-![](img/what-tests-isolation-test.png)
-
-Note:
-Douglas
-
-Ce type de test est réalisé sur un _banc de test_ (pour un cas isolé) en pratiquant une 
-répétition d'exécutions.
-
+Note: 
+Pour illustré ce test, je vous propose de comparer la recherche d'un objet dans une liste en comparant 
+deux méthodes différentes : 
+  La boucle célèbre **FOR**
+  vs 
+  L'illustre **Stream** API de Java
+Pour cela nous utiliserons JMH. C'est un outil proposé et maintenu par OpenJDK
 
 <!--v-->
 
 ### Concepts
 
-Choix du type d'analyse
+Type d'analyse
 
 Définition d'un `State`
 
 Écriture du code à tester
 
-Écriture du `Benchmark`
-
 <!--v-->
 
-#### Types d'analyses
+#### Les types d'analyses
 
 - Throughput: ops/time
 - AverageTime: time/op
@@ -263,7 +258,7 @@ Note:
 
 #### State
 
-```java [1|3|5-11]
+```java [3|1|5-11]
 @State(Scope.Benchmark)
 public static class ExecutionPlan {
     public List<Brand> brandList = new ArrayList<>(10000);
@@ -280,9 +275,10 @@ public static class ExecutionPlan {
 
 Note: 
 
+- Une liste contenant un nombre certain de valeurs différentes
 - Petite annotation qui va bien
-- Une petite liste dans laquelle nous allons chercher
-- Une fonction pour remplir notre liste
+- Une fonction pour remplir notre liste. _Remarque :_ la fonction 'buildBrand()' 
+  n'importe pas ici
 
 <!--v-->
 
@@ -307,14 +303,14 @@ private Brand findBrandFor(List<Brand> brandList, Integer id) {
 
 Note:
 
-- Une fonction qui utilise une `stream` pour chercher par ID dans la `List`
-- Une fonction qui utilise une boucle `ForEach` pour chercher par ID dans la `List`
+- Une fonction qui utilise une 'stream' pour chercher par ID dans la 'List'
+- Une fonction qui utilise une boucle 'ForEach' pour chercher par ID dans la 'List'
 
 <!--v-->
 
 #### Définition du benchmark 1/2
 
-```java [1|2,4|3|5-10]
+```java [3|2,4|5-10]
 @Benchmark
 @OperationsPerInvocation(10000)
 public void findBrandStream(Blackhole blackhole, ExecutionPlan plan) {
@@ -328,6 +324,18 @@ public void findBrandStream(Blackhole blackhole, ExecutionPlan plan) {
     }
 }
 ```
+
+Note: 
+Fonction de recherche par Stream, deux paramètres:
+- Blackhole (pour éviter le "dead code eviction" du compilateur)
+- Plan (Context)
+
+Une boucle itérant un certain nombre de fois sur le code à analyser. 
+On passe au Framework se nombre pour ses calculs
+
+Le résultat de la fonction est envoyé dans le Blackhole, 
+
+L'ID de l'objet à trouver est pris de façon aléatoire dans la liste
 
 <!--v-->
 
@@ -350,14 +358,16 @@ public void findBrandFor(Blackhole blackhole, ExecutionPlan plan) {
 
 Note:
 
+Code très semblable au code précédent, mais cette fois on appelle l'autre fonction :) 
+
 <!--v-->
 
 #### Exécution
 
-```
+```shell [2,11-13|3,15-17]
 # Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
-# Warmup: 5 iterations, 10 s each
-# Measurement: 5 iterations, 10 s each
+# Warmup: 3 iterations, 10 s each
+# Measurement: 3 iterations, 10 s each
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
@@ -367,10 +377,21 @@ Note:
 # Fork: 1 of 1
 # Warmup Iteration   1: 76239,113 ops/s
 # Warmup Iteration   2: 76767,384 ops/s
+# Warmup Iteration   3: 76239,113 ops/s
 
 Iteration   1: 76972,113 ops/s
 Iteration   2: 76562,211 ops/s
+Iteration   3: 76972,113 ops/s
 ```
+
+Note:
+
+En Java le code est compilé mais pas trop. Une phase importante pour les applications Java 
+a lieu à l'exécution, l'optimisation. Celle-ci est effectuée par le JIT Compiler.
+Pour éviter de mesurer ce travail d'optimisation, le Framework effectue quelques tours de chauffe
+
+Puis mesure réellement. Attention à éviter tout ce qui peut perturber le test si vous 
+l'exécuter sur votre machine (l'agenda, les mails, les notifications Slack)
 
 <!--v-->
 
@@ -378,9 +399,16 @@ Iteration   2: 76562,211 ops/s
 
 ```
 Benchmark                         Mode  Cnt      Score      Error  Units
-StreamVsForMain.findBrandFor     thrpt    5  76758,517 ±  559,708  ops/s
-StreamVsForMain.findBrandStream  thrpt    5  43736,684 ± 1081,065  ops/s
+StreamVsForMain.findBrandFor     thrpt    3  76758,517 ±  559,708  ops/s
+StreamVsForMain.findBrandStream  thrpt    3  43736,684 ± 1081,065  ops/s
 ```
+
+Note:
+
+Une fois les mesures effectuées JMH vous sort un joli petit tableau de comparaison.
+
+L'erreur que l'on voit ici c'est "l'interval de confiance", c'est à dire l'écart de temps 
+autour de la moyenne (score) dans lequel se trouve 99% des temps mesurés.
 
 <!--h-->
 
