@@ -1,3 +1,18 @@
+# [1.4.0](https://github.com/Zenika/perf-test-presentation/compare/1.3.0...1.4.0) (2023-12-06)
+
+
+### Bug Fixes
+
+* **presentation:** update next to rehearsal of the day ([d856690](https://github.com/Zenika/perf-test-presentation/commit/d8566901029c0232563309dc15eb0059e49dc4f6))
+
+
+### Features
+
+* **demonstration:** add last modification of test case ([b27b681](https://github.com/Zenika/perf-test-presentation/commit/b27b681627c0fefeb354440c15d67fde5163e069))
+* **demonstration:** add last modification of test case ([74358a0](https://github.com/Zenika/perf-test-presentation/commit/74358a0e2636440c6d7f7af7b3b3b9f7693d8bb2))
+* **microbench:** ajout des commentaires ([0e538cf](https://github.com/Zenika/perf-test-presentation/commit/0e538cff73c2c7c6767e4cc712109e6b19caddf6))
+* **presentation:** last adjustment ([b7f36cb](https://github.com/Zenika/perf-test-presentation/commit/b7f36cbe430612a85df2176cd3c564b57ed85dce))
+
 # [1.3.0](https://github.com/Zenika/perf-test-presentation/compare/1.2.0...1.3.0) (2023-11-29)
 
 
