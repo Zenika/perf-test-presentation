@@ -151,7 +151,7 @@ Sylvain
 
 Le test de charge est la forme la plus simple et connu pour tester une application.
 L'objectif est de vérifier si l'application est capable de gérer les limites de temps de réponse / consommation 
-ressources qui ont été décider préalablement (par exemple au travers d'un SLA)
+ressources qui ont été décider préalablement (par exemple au travers d'un SLA, Service Level Agreements)
 L'infrastructure est également sous-monitoring durant cette phase de test.
 
 Ce type de test peut être utilisé comme un test de qualité d'une release à une autre, ainsi qu'un objectif à maintenir.
@@ -212,7 +212,7 @@ Le test d'endurance consiste à maintenir une charge pendant un temps extrêmeme
 l'application testée est capable de supporter un tel scénario.
 Comme les tests de charge l'infrastructure est également sous-monitoring durant cette phase de test.
 
-le critere determinant c'est le temps du test (il est tres tres long, le faire apparaitre sur le graph)
+le critère determinant c'est le temps du test (il est trés long, le faire apparaitre sur le graph)
 
 <!--h-->
 
@@ -530,7 +530,6 @@ Pour tester notre API, on va donc avoir un scénario assez simple qui va simuler
 1. un enregistrement d'une donnée
 2. une lecture de ce nouvel enregistrement
 3. une modification de ce nouvel enregistrement
-4. suppression du message en question
 
 Ce scénario sera exécuté par tous les utilisateurs virtuels
 
@@ -548,16 +547,49 @@ Dans cette demonstration, on fait :
 3. lancer le scenario en cloud
 4. on va regarder le scenario en mode cloud et consulter les différents tableau de Blazemeter
 
+<!--v-->
+
+<!-- .slide: data-auto-animate -->
+### Taurus
+
+
+Note:
+Lancement de Taurus en local
+
+<!--v-->
+
+<!-- .slide: data-auto-animate -->
+### Taurus
+
+
+Note:
+Lancement de d'un test sur blazemeter (en mode cloud)
+
 <!--h-->
+
+### Questions ?
+
+<!--v-->
 
 ### Merci !
 
-Questions ?
+Présenté par :
 
-Note:
-(ajouter QR code)
+<div style="display: flex">
+  <div style="margin-right: 1em; flex-grow: 1;">
+    <img src="https://ca.slack-edge.com/T02ARLB3P-UJBF7FZN2-31b7bf716a53-512" width="300"><br/>
+    Douglas SIX
+  </div>
+  <div style="margin-left: 1em; flex-grow: 1;">
+    <img src="img/fake_qr_code.png" width="300"><br/>
+  </div>
+  <div style="margin-left: 1em; flex-grow: 1;">
+    <img src="https://ca.slack-edge.com/T02ARLB3P-U05SKR4V84E-968b749ae082-512" width="300"><br/>
+    Sylvain LAVAZAIS
+  </div>
+</div>
 
-(ajouter nos tronches...)
+
 
 
 

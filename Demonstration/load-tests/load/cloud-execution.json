@@ -1,0 +1,19 @@
+{
+  "execution": [
+    {
+      "concurrency": 50,
+      "throughput": 200,
+      "ramp-up": "2m",
+      "hold-for": "18m",
+      "steps": 5,
+      "scenario": "full_cycle"
+    }
+  ],
+  "provisioning": "cloud",
+  "modules": {
+    "cloud": {
+      "check-interval": "5s",
+      "detach": true
+    }
+  }
+}
