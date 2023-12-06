@@ -24,40 +24,6 @@ start-docker: ## start the docker compose stack
 	@docker volume rm db-vol || true
 .PHONY: .reset-docker
 
-##  -------
-##@ Test
-##  -------
-
-test: ## Run all unit tests on local (with coverage)
-	@echo "===> $@ <==="
-	@python -m coverage run -m unittest -v
-	@python -m coverage report
-.PHONY: test
-
-test-and-report-sonar: install-test ## Run all tests and report for sonar (ci only)
-	@echo "===> $@ <==="
-	@python -m coverage run -m unittest -v
-	@python -m coverage xml -o coverage.xml
-.PHONY: test-and-report-sonar
-
-##  -------
-##@ Quality
-##  -------
-
-apply-isort: ## Applying autosort of imports
-	@echo "===> $@ <==="
-	@if ! python -m isort > /dev/null; then $(MAKE) install-test; fi
-	@python -m isort ./src --sp ../.github/linters/.isort.cfg
-	@echo "Done !"
-.PHONY: apply-isort
-
-check-linter: ## Run flake8 linter on sources
-	@echo "===> $@ <==="
-	@if ! python -m flake8 --version; then $(MAKE) install-test; fi
-	@python -m flake8 --config ../.github/linters/.flake8 ./src
-	@echo "Done !"
-.PHONY: check-linter
-
 ##  ----
 ##@ Load test
 ##  ----
