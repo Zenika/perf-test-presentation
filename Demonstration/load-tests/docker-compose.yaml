@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  database:
+    image: postgres:alpine
+    environment:
+      POSTGRES_PASSWORD: 'dbpass'
+      POSTGRES_USER:     'dbuser'
+      POSTGRES_DB:       'deposit'
+    volumes:
+      - db-vol:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    networks:
+      - test-net
+
+  app:
+    image: docker.io/slavazais/api-test:latest
+    command:
+      - '0.0.0.0'
+      - '8080'
+    environment:
+      API_DB_USER_PASSWORD: 'dbpass'
+      API_DB_HOST_NAME: 'database'
+      API_ENV: 'prod'
+    ports:
+      - '8080:8080'
+    networks:
+      - test-net
+
+networks:
+  test-net:
+
+volumes:
+  db-vol:
+    external: true
