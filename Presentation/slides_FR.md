@@ -44,16 +44,14 @@ Mais tout d'abord, parlons des tests de performance...
    3. test en stress
    4. test de pic
    5. test au limites
-   6. test d'endurance
 3. Tests en isolement avec Java Microbenchmark Harness
-   1. Demo Isolement
 4. Tests de charge avec Taurus 
    1. Demo de charge
 5. Merci !
 
 <!--h-->
 
-### Les testes performance, qu'est-ce que c'est ?
+### qu'est-ce que c'est ?
 
 <img src="img/what-is-perf-1.png" alt="drawing" width="500"/>
 
@@ -66,7 +64,7 @@ On peut ainsi en déterminer des axes d'amélioration.
 <!--v-->
 
 <!-- .slide: data-auto-animate -->
-### Les testes performance, qu'est-ce que c'est ? 
+### Quel bénéfice en tirer ? 
 
 <div style="display: flex">
    <div>
@@ -91,7 +89,7 @@ Voici les principals métriques qu'un test de performance évalue :
 <!--v-->
 
 <!-- .slide: data-auto-animate -->
-### Les testes performance, qu'est-ce que c'est ?
+### Quel bénéfice en tirer ?
 
 <div style="display: flex">
    <div>
@@ -113,23 +111,10 @@ Les tests de performance permet également de :
   - De prévenir les coupures dû à la charge
   - De détecter les bugs non couverts / les goulots d'étranglement
   - D'atténuer les failles de sécurités
-<!--v-->
-
-### Quel type de test pratiquer?
-
-1. test en isolement
-2. test de charge
-3. test en stress
-4. test de pic
-5. test aux limites
-6. test d'endurance
-
-Note:
-Voici les différents tests de performance praticable ainsi que les diférences entre eux.
 
 <!--v-->
 
-### Test en isolement
+### Test en isolation
 
 ![](img/what-tests-isolation-test.png)
 
@@ -155,6 +140,9 @@ ressources qui ont été décider préalablement (par exemple au travers d'un SL
 L'infrastructure est également sous-monitoring durant cette phase de test.
 
 Ce type de test peut être utilisé comme un test de qualité d'une release à une autre, ainsi qu'un objectif à maintenir.
+
+Pour aller plus loin, il est possible de prolongé la durée afin d'obtenir un test 
+d'endurance (pour détecté les problèmes de fuite mémoire)
 
 <!--v-->
 
@@ -198,21 +186,6 @@ On parle souvent de test de capacité car il est utile pour déterminer si le SL
 L'objectif visé est la rupture de l'application pour une infrastructure donnée. La rupture étant caractérisée par des données
 définies en accord avec le client par ex: "au doigt mouillé la limite sera de 70% des réponses KO", ou bien un temps de réponse de 10s
 par page... La monté en charge est ici lente et le test peut être long.
-
-<!--v-->
-
-### Test d'endurance
-
-![](img/what-tests-soaking-test.png)
-
-Note:
-Sylvain
-
-Le test d'endurance consiste à maintenir une charge pendant un temps extrêmement long et permet déterminer si 
-l'application testée est capable de supporter un tel scénario.
-Comme les tests de charge l'infrastructure est également sous-monitoring durant cette phase de test.
-
-le critère determinant c'est le temps du test (il est trés long, le faire apparaitre sur le graph)
 
 <!--h-->
 
