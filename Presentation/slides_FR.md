@@ -30,7 +30,8 @@ Sources:
 4. Taurus
 
 Note:
-Pour cette présentation, nous allons voir grossièrement ce que sont les tests de performance, et nous allons faire deux focus sur des sous-domaine de test qui sont le micro benchmark et les tests de charge.
+Pour cette présentation, nous allons voir grossièrement ce que sont les tests de performance, et nous allons faire deux 
+focus sur un sous-domaine de test qui sont le micro benchmark et les tests de charge.
 
  - Le focus sur le micro-benchmark se fera avec Java Microbenchmark Harness (JMH) et sera présenté par Douglas Six.
  - Le focus sur les tests de charge se fera avec Taurus et sera présenté par Sylvain Lavazais.
@@ -57,7 +58,7 @@ Mais tout d'abord, parlons des tests de performance...
 
 Note:
 Les tests de performances, c'est la capacité à mettre une application et toutes ses dépendances dans un context virtuel 
-ou réel et observer comment ces composants se comportent dans des conditions de stress / charge / etc.
+ou réel et observer comment ces composants se comportent dans des conditions de stress / charge, etc.
 
 On peut ainsi en déterminer des axes d'amélioration.
 
@@ -121,8 +122,8 @@ Les tests de performance permet également de :
 Note:
 Douglas
 
-Ce type de test est réalisé sur un _banc de test_, c'est à dire un sous ensemble de l'application finale,
-par example la fonctionalité d'ajout au panier mais sans la partie navigation dans le site...
+Ce type de test est réalisé sur un _banc de test_, c'est-à-dire un sous ensemble de l'application finale,
+par example la fonctionalité d'ajout au panier, mais sans la partie navigation dans le site...
 Le test sera réalisé en pratiquant une répétition d'exécutions. 
 
 <!--v-->
@@ -141,8 +142,8 @@ L'infrastructure est également sous-monitoring durant cette phase de test.
 
 Ce type de test peut être utilisé comme un test de qualité d'une release à une autre, ainsi qu'un objectif à maintenir.
 
-Pour aller plus loin, il est possible de prolongé la durée afin d'obtenir un test 
-d'endurance (pour détecté les problèmes de fuite mémoire)
+Pour aller plus loin, il est possible de prolonger la durée afin d'obtenir un test 
+d'endurance (pour détecter les problèmes de fuite mémoire)
 
 <!--v-->
 
@@ -154,8 +155,9 @@ Note:
 Douglas
 
 Ce type de test vise à comprendre comment l'application va se comporter face à une charge plus importante
-que le cas nominal (x2 à x4) en utilisant la même infra que celle ciblé. On identifie ainsi les endroits de 
-l'application où se produiront les premières erreurs, ainsi que les temps de réponse en dehors des exigences.
+que le cas nominal (x2 à x4) en utilisant la même infra que celle ciblée.
+On identifie ainsi les endroits de l'application où se produiront les premières erreurs, 
+ainsi que les temps de réponse en dehors des exigences.
 
 
 <!--v-->
@@ -181,25 +183,26 @@ Note:
 Douglas
 
 Le test au limites permet d'évaluer le point de rupture de l'application.
-On parle souvent de test de capacité car il est utile pour déterminer si le SLA est judicieux pour l'application testée.
+On parle souvent de test de capacité, car il est utile pour déterminer si le SLA est judicieux pour l'application testée.
 
 L'objectif visé est la rupture de l'application pour une infrastructure donnée. La rupture étant caractérisée par des données
-définies en accord avec le client par ex: "au doigt mouillé la limite sera de 70% des réponses KO", ou bien un temps de réponse de 10s
-par page... La monté en charge est ici lente et le test peut être long.
+définies en accord avec le client par ex : "au doigt mouillé la limite sera de 70% des réponses KO", ou bien un temps de réponse de 10s
+par page... La montée en charge est ici lente et le test peut être long.
 
 <!--h-->
 
 ### Microbenchmark
 
-Outils utilisé: [Open JDK JMH](https://github.com/openjdk/jmh)
+Outils utilisé : [Open JDK JMH](https://github.com/openjdk/jmh)
 
 Note: 
-Pour illustré ce test, je vous propose de comparer la recherche d'un objet dans une liste en comparant 
+Pour illustrer ce test, je vous propose de comparer la recherche d'un objet dans une liste en comparant 
 deux méthodes différentes : 
   La boucle célèbre **FOR**
   vs 
   L'illustre **Stream** API de Java
-Pour cela nous utiliserons JMH. C'est un outil proposé et maintenu par OpenJDK
+Pour cela, nous utiliserons JMH.
+C'est un outil proposé et maintenu par OpenJDK
 
 <!--v-->
 
@@ -222,10 +225,10 @@ Définition d'un `State`
 
 Note:
 
-- Throughput: pour un temps donné, compte le nombre d'exec de la fonction
-- AverageTime: pour un nombre d'exécution donné, mesure le temps
-- SampleTime: exécute la fonction en continue et échantillon de temps
-- SingleShotTime: exécute une fois la fonction, idéal pour exec à froid
+- Throughput : pour un temps donné, compte le nombre d'exec. de la fonction
+- AverageTime : pour un nombre d'exécutions donné, mesure le temps
+- SampleTime : exécute la fonction en continu et échantillon de temps
+- SingleShotTime : exécute une fois la fonction, idéal pour exec à froid
 
 <!--v-->
 
@@ -299,7 +302,7 @@ public void findBrandStream(Blackhole blackhole, ExecutionPlan plan) {
 ```
 
 Note: 
-Fonction de recherche par Stream, deux paramètres:
+Fonction de recherche par Stream, deux paramètres :
 - Blackhole (pour éviter le "dead code eviction" du compilateur)
 - Plan (Context)
 
@@ -489,7 +492,7 @@ Tout d'abords les paramètres d'exécution qui gère donc la volumétrie et le t
  - 100 utilisateurs
  - 2000 requêtes par secondes (total reparti sur les 100 utilisateurs)
  - sur 1 heure
- - 15 minutes de monté en charge
+ - 15 minutes de montée en charge
 
 <!--v-->
 
@@ -518,7 +521,7 @@ Dans cette demonstration, on fait :
 1. lancer le scenario en local
 2. on regarde rapidement les stats si tout semble ok
 3. lancer le scenario en cloud
-4. on va regarder le scenario en mode cloud et consulter les différents tableau de Blazemeter
+4. on va regarder le scenario en mode cloud et consulter les différents tableaux de Blazemeter
 
 <!--v-->
 
