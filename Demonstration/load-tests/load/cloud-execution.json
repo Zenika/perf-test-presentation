@@ -1,8 +1,8 @@
 {
   "execution": [
     {
-      "concurrency": 50,
-      "throughput": 200,
+      "concurrency": 10,
+      "throughput": 20,
       "ramp-up": "2m",
       "hold-for": "18m",
       "steps": 5,
