@@ -514,7 +514,7 @@ Ce scénario sera exécuté par tous les utilisateurs virtuels
 <!-- .slide: data-auto-animate -->
 ### Taurus
 
-Demo !
+Demo
 
 Note:
 Dans cette demonstration, on fait :
@@ -539,6 +539,8 @@ Lancement de Taurus en local
 
 
 Note:
+les rapports a distance :
+ - https://a.blazemeter.com/app/#/accounts/1786851/workspaces/1853141/projects/2136505/masters/70818191/summary
 Lancement de d'un test sur blazemeter (en mode cloud)
 
 <!--h-->
