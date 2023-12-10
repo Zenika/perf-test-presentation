@@ -528,6 +528,10 @@ Dans cette demonstration, on fait :
 <!-- .slide: data-auto-animate -->
 ### Taurus
 
+<iframe width="1024" height="600" src="https://www.youtube.com/embed/Bs8uKnOalXE?si=fb3GoRsgnqD2hpmm" 
+        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+        encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+</iframe>
 
 Note:
 Lancement de Taurus en local
