@@ -408,12 +408,12 @@ in local-dev condition
 
 ```yaml
 execution:
-- concurrency: 100
+- concurrency: 200
   hold-for: 1h
   ramp-up: 15m
   scenario: scenario1
-  steps: 10
-  throughput: 2000
+  steps: 5
+  throughput: 4000
 ```
 
 ```yaml
@@ -441,12 +441,12 @@ in cloud condition
 
 ```yaml
 execution:
-- concurrency: 100
+- concurrency: 200
   hold-for: 1h
   ramp-up: 15m
   scenario: scenario1
-  steps: 10
-  throughput: 2000
+  steps: 5
+  throughput: 4000
   provisioning: cloud
   locations: 
     eu-central-1: 2
@@ -489,10 +489,10 @@ système d'information
 
 Note:
 Tout d'abords les paramètres d'exécution qui gère donc la volumétrie et le temps d'exécution du scenario de test:
- - 100 utilisateurs
- - 2000 requêtes par secondes (total reparti sur les 100 utilisateurs)
- - sur 1 heure
- - 15 minutes de montée en charge
+ - 10 utilisateurs
+ - 20 requêtes par secondes (total reparti sur les 10 utilisateurs)
+ - sur 20 minutes
+ - 10 secondes de montée en charge
 
 <!--v-->
 
