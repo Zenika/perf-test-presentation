@@ -234,7 +234,7 @@ Note:
 
 #### State
 
-```java [3|1|5-11]
+```java [3|5-10]
 @State(Scope.Benchmark)
 public static class ExecutionPlan {
     public List<Brand> brandList = new ArrayList<>(10000);
@@ -252,7 +252,6 @@ public static class ExecutionPlan {
 Note: 
 
 - Une liste contenant un nombre certain de valeurs différentes
-- Petite annotation qui va bien
 - Une fonction pour remplir notre liste. _Remarque :_ la fonction 'buildBrand()' 
   n'importe pas ici
 
