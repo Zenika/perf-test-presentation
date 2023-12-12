@@ -536,6 +536,15 @@ Dans cette demonstration, on fait :
 Note:
 Lancement de Taurus en local
 
+Voici les détails de ce qui est montré dans la vidéo :
+L'indicateur dans le coin supérieur gauche donne le nombre d'utilisateurs virtuel connecté.
+L'indicateur dans le centre gauche donne le nombre de requêtes par secondes.
+L'indicateur dans le coin inférieur gauche donne la latence moyenne des réponses.
+Le tableau dans le centre supérieur donne les statistiques des requêtes dans le dernier interval.
+Le tableau au centre donne les statistiques des requêtes globâles.
+Les scénarios joués sont dans le coin supérieur droit.
+Les messages d'erreurs sont eux situé dans le coin inférieur droit.
+
 <!--v-->
 
 <!-- .slide: data-auto-animate -->
@@ -543,7 +552,7 @@ Lancement de Taurus en local
 
 
 Note:
-les rapports a distance :
+Les rapports a distance :
  - https://a.blazemeter.com/app/#/accounts/1786851/workspaces/1853141/projects/2136505/masters/70818191/summary
 Lancement de d'un test sur blazemeter (en mode cloud)
 
