@@ -122,9 +122,9 @@ Les tests de performance permet également de :
 Note:
 Douglas
 
-Ce type de test est réalisé sur un _banc de test_, c'est-à-dire un sous ensemble de l'application finale,
-par example la fonctionalité d'ajout au panier, mais sans la partie navigation dans le site...
-Le test sera réalisé en pratiquant une répétition d'exécutions. 
+Pour ce type de test on va tester un __sous ensemble__ de l'application finale,
+par example la fonctionalité d'ajout au panier, mais sans la partie navigation dans le site, l'authent ou le paiement...
+Le test sera réalisé en pratiquant une __répétition__ d'exécutions. 
 
 <!--v-->
 
@@ -154,10 +154,10 @@ d'endurance (pour détecter les problèmes de fuite mémoire)
 Note:
 Douglas
 
-Ce type de test vise à comprendre comment l'application va se comporter face à une charge plus importante
-que le cas nominal (x2 à x4) en utilisant la même infra que celle ciblée.
-On identifie ainsi les endroits de l'application où se produiront les premières erreurs, 
-ainsi que les temps de réponse en dehors des exigences.
+Ce type de test vise à __comprendre__ comment l'application va se __comporter__ face à une __charge plus importante__
+que le cas nominal (x2 à x4) en utilisant la __même infra__ que celle ciblée avec une montée en charge __rapide__.
+On identifie ainsi les endroits de l'application où se produiront les __premières erreurs__, 
+ainsi que les __temps de réponse en dehors__ des exigences.
 
 
 <!--v-->
@@ -182,12 +182,15 @@ ou à l'inverse une baisse de charge.
 Note:
 Douglas
 
-Le test au limites permet d'évaluer le point de rupture de l'application.
+Le test aux limites permet d'évaluer le point de rupture de l'application.
 On parle souvent de test de capacité, car il est utile pour déterminer si le SLA est judicieux pour l'application testée.
 
-L'objectif visé est la rupture de l'application pour une infrastructure donnée. La rupture étant caractérisée par des données
-définies en accord avec le client par ex : "au doigt mouillé la limite sera de 70% des réponses KO", ou bien un temps de réponse de 10s
-par page... La montée en charge est ici lente et le test peut être long.
+L'objectif visé est la __rupture__ de l'application pour une __infrastructure donnée__. 
+
+La rupture étant caractérisée par des données définies en accord avec le client par ex : "au doigt mouillé la limite sera de 70% des réponses KO", ou bien un temps de réponse de 10s par page... 
+
+La montée en charge est ici lente et le test peut être long.
+
 
 <!--h-->
 
@@ -196,12 +199,16 @@ par page... La montée en charge est ici lente et le test peut être long.
 Outils utilisé : [Open JDK JMH](https://github.com/openjdk/jmh)
 
 Note: 
+
 Pour illustrer ce test, je vous propose de comparer la recherche d'un objet dans une liste en comparant 
-deux méthodes différentes : 
-  La boucle célèbre **FOR**
-  vs 
+deux méthodes différentes : <br/>
+<ul>
+  La boucle célèbre **FOR** <br/>
+  vs  <br/>
   L'illustre **Stream** API de Java
-Pour cela, nous utiliserons JMH.
+</ul> 
+<br/>
+Pour cela, nous utiliserons JMH. <br/>
 C'est un outil proposé et maintenu par OpenJDK
 
 <!--v-->
