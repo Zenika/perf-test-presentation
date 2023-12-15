@@ -203,9 +203,9 @@ Note:
 Pour illustrer ce test, je vous propose de comparer la recherche d'un objet dans une liste en comparant 
 deux méthodes différentes : <br/>
 <ul>
-  La boucle célèbre **FOR** <br/>
+  La boucle célèbre <b>FOR</b> <br/>
   vs  <br/>
-  L'illustre **Stream** API de Java
+  L'illustre <b>Stream</b> API de Java
 </ul> 
 <br/>
 Pour cela, nous utiliserons JMH. <br/>
@@ -368,7 +368,7 @@ Iteration   3: 76972,113 ops/s
 
 Note:
 
-En Java le code est compilé mais pas trop. Une phase importante pour les applications Java 
+En Java le code est compilé, mais pas trop. Une phase importante pour les applications Java 
 a lieu à l'exécution, l'optimisation. Celle-ci est effectuée par le JIT Compiler.
 Pour éviter de mesurer ce travail d'optimisation, le Framework effectue quelques tours de chauffe
 
@@ -389,7 +389,7 @@ Note:
 
 Une fois les mesures effectuées JMH vous sort un joli petit tableau de comparaison.
 
-L'erreur que l'on voit ici c'est "l'interval de confiance", c'est à dire l'écart de temps 
+L'erreur que l'on voit ici, c'est "l'interval de confiance", c'est-à-dire l'écart de temps 
 autour de la moyenne (score) dans lequel se trouve 99% des temps mesurés.
 
 <!--h-->
@@ -578,7 +578,7 @@ Présenté par :
     Douglas SIX
   </div>
   <div style="margin-left: 1em; flex-grow: 1;">
-    <img src="img/fake_qr_code.png" width="300"><br/>
+    <img src="img/openfeedback-qr-code.png" width="300"><br/>
   </div>
   <div style="margin-left: 1em; flex-grow: 1;">
     <img src="https://ca.slack-edge.com/T02ARLB3P-U05SKR4V84E-968b749ae082-512" width="300"><br/>
