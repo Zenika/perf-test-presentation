@@ -1,3 +1,20 @@
+# [1.5.0](https://github.com/Zenika/perf-test-presentation/compare/1.4.0...1.5.0) (2023-12-15)
+
+
+### Bug Fixes
+
+* **presentation:** fix load parameters for examples ([81772ac](https://github.com/Zenika/perf-test-presentation/commit/81772ac702f98685abe1af5c873b73393a7e46b5))
+* **presentation:** fix presentation/demo assets ([535bdfa](https://github.com/Zenika/perf-test-presentation/commit/535bdfabcf544b6ec9fdd16e98a3f382b5e40e17))
+* **Presentation:** fix typos ([de3f900](https://github.com/Zenika/perf-test-presentation/commit/de3f900fd52bc22678c114dbcc758f59c15786a0))
+* **Presentation:** update presentation with last remarks ([a1924e0](https://github.com/Zenika/perf-test-presentation/commit/a1924e0475f6e9861b8f69dc02ccf47bbdeb9692))
+
+
+### Features
+
+* **presentation:** add comment to local test video ([393a91b](https://github.com/Zenika/perf-test-presentation/commit/393a91bc41884c846ebbbe6d90ed7e1abeb950a3))
+* **presentation:** add local load test video ([494c632](https://github.com/Zenika/perf-test-presentation/commit/494c6321046ee7060ec6efcf240718b4d9b3ca97))
+* **presentation:** add QR code with openfeedback ([97d0530](https://github.com/Zenika/perf-test-presentation/commit/97d05303df26696bf908e22d11c22198da99cdf2))
+
 # [1.4.0](https://github.com/Zenika/perf-test-presentation/compare/1.3.0...1.4.0) (2023-12-06)
 
 
